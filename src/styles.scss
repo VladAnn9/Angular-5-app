@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 16px;
+}
+
+h1 { 
+    font-family: 'Staatliches', cursive;
+    font-size: 260%;
+}
+
+.row {
+    display: flex !important;
+    justify-content: center !important;
+}

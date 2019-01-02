@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <button mat-raised-button routerLink="/planets">Back</button>
+  </div>
+
+  <div class="details" *ngIf="planet">
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile class="style">Name:</mat-grid-tile>
+      <mat-grid-tile>{{planet.name}}</mat-grid-tile>
+      <mat-grid-tile class="style">Diameter:</mat-grid-tile>
+      <mat-grid-tile>{{planet.diameter}}</mat-grid-tile>
+      <mat-grid-tile class="style">Gravity:</mat-grid-tile>
+      <mat-grid-tile>{{planet.gravity}}</mat-grid-tile>
+      <mat-grid-tile class="style">Climate:</mat-grid-tile>
+      <mat-grid-tile>{{planet.climate}}</mat-grid-tile>
+      <mat-grid-tile class="style">Surface water:</mat-grid-tile>
+      <mat-grid-tile>{{planet.surface_water}}</mat-grid-tile>
+      <mat-grid-tile class="style">Population:</mat-grid-tile>
+      <mat-grid-tile>{{planet.population}}</mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>

@@ -1,0 +1,49 @@
+div.container {
+    padding: 60px 0;
+
+    mat-form-field {
+        font-family: 'Raleway', Arial, sans-serif;
+        font-size: 20px;
+    }
+
+    mat-paginator {
+        background: transparent;
+        margin-top: 6px;
+        font-family: 'Raleway', Arial, sans-serif;
+        font-size: 14px;
+
+    }
+
+   .planets {
+       margin-top: 24px;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+
+        .planet {
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Staatliches', cursive;
+        font-size: 160%;
+        margin: 12px;
+        width: 200px;
+        height: 160px;
+        background: #f4a460;
+        cursor: pointer;
+        outline: none;
+        transition: transform, color 0.1s cubic-bezier(0, 1.8, 1, 1.8);
+
+        &:hover {
+            transform: scale(1.15);
+            color: #ffc08a;
+        }
+       }
+   }
+}
+
+::ng-deep .mat-paginator-range-actions {
+    button {
+        color: #f4a460;
+    }
+}

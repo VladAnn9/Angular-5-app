@@ -1,0 +1,32 @@
+<div class="container">
+  <mat-form-field color="warn" class="row">
+    <input #searchPhrase (keyup)="search(searchPhrase.value, paginator)" matInput placeholder="Planet name" type="text">
+  </mat-form-field>
+
+  <mat-paginator #paginator class="row" color="warn" *ngIf="searchedPlanets || planets" 
+    [length]="searchPhrase.value ? searchedPlanets.length : planets.length"
+    [pageSize]="pageSize" 
+    [pageIndex]="pageIndex" 
+    [pageSizeOptions]="[5, 10, 25, 100]" 
+    (page)="paginatorData($event, searchPhrase.value)">
+  </mat-paginator>
+
+  <div class="row spinner" [@fadeOut]="in" *ngIf="showSpinner">
+    <mat-spinner color="warn" diameter="30"></mat-spinner>
+  </div>
+
+  <div class="planets">
+    <ng-container *ngIf="searchPhrase.value; else allList">
+      <div *ngFor="let planet of dataSource" class="planet" routerLink="/detail/{{planet.url.slice(-3, -1)}}">
+        <span>{{planet.name}}</span>
+      </div>
+    </ng-container>
+    <ng-template #allList>
+      <div *ngFor="let planet of dataSource" class="planet" routerLink="/detail/{{planet.url.slice(-3, -1)}}">
+        <span>{{planet.name}}</span>
+      </div>
+    </ng-template>
+  </div>
+
+
+</div>
