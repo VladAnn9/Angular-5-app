@@ -3,7 +3,7 @@
     <input #searchPhrase (keyup)="search(searchPhrase.value, paginator)" matInput placeholder="Planet name" type="text">
   </mat-form-field>
 
-  <mat-paginator #paginator class="row" color="warn" *ngIf="searchedPlanets || planets" 
+  <mat-paginator #paginator class="row" *ngIf="searchedPlanets || planets" 
     [length]="searchPhrase.value ? searchedPlanets.length : planets.length"
     [pageSize]="pageSize" 
     [pageIndex]="pageIndex" 

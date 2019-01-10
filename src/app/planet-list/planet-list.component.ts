@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 
-import { switchMap } from 'rxjs/operators';
+import { switchMap, distinctUntilChanged, debounce, debounceTime } from 'rxjs/operators';
 
 import { PageEvent } from '@angular/material';
 import { MatPaginator } from "@angular/material";
@@ -51,6 +51,10 @@ export class PlanetListComponent implements OnInit {
     this.getPlanets();
 
     this.searchTerms.pipe(
+      debounceTime(300),
+
+      distinctUntilChanged(),
+
       switchMap((term: string) => this.planetService.searchPlanets(term))
     ).subscribe(data => {
       this.searchedPlanets = data;
@@ -62,10 +66,10 @@ export class PlanetListComponent implements OnInit {
     this.planetService.getPlanets(page).subscribe(response =>  {
       this.planets = this.planets.concat(response['results']);
       if (response['next'] !== null) {
+        this.dataSource = this.planets.slice(this.pageIndex, this.pageSize);
         this.getPlanets(++page);
       } else {
         this.showSpinner = false;
-        this.dataSource = this.planets.slice(this.pageIndex, this.pageSize);
       }
     });
   }
